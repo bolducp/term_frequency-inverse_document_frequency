@@ -10,7 +10,7 @@ def parse(doc):
     return doc.translate(str.maketrans("", "", string.punctuation))
 
 
-def create_vocab_map():
+def create_vocab_map(parsed_documents):
     vocabulary = list(set("".join(parsed_documents).split()))
     return { word: index for index, word in enumerate(vocabulary) }
 
@@ -58,12 +58,12 @@ def calculate_tf_idf(vocab_map, term_frequencies, inverse_document_frequencies):
     return tf_idf
 
 
-parsed_documents = [parse(doc) for doc in documents]
-vocab_map = create_vocab_map()
-index_to_vocab_map = create_index_to_vocab_map(vocab_map)
-idf = create_idf_array(vocab_map, parsed_documents)
+# parsed_documents = [parse(doc) for doc in documents]
+# vocab_map = create_vocab_map(parsed_documents)
+# index_to_vocab_map = create_index_to_vocab_map(vocab_map)
+# idf = create_idf_array(vocab_map, parsed_documents)
 
-all_docs_td_idfs = np.array([calculate_tf_idf(vocab_map, create_word_freq_array(parse(document), vocab_map), idf) for document in parsed_documents])
+# all_docs_td_idfs = np.array([calculate_tf_idf(vocab_map, create_word_freq_array(parse(document), vocab_map), idf) for document in parsed_documents])
 
 
 def top_10_words(doc):
