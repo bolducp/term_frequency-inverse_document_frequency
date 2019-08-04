@@ -35,4 +35,5 @@ clf = linear_model.LogisticRegression(penalty='l1', solver='saga', tol=1e-6, max
 clf.fit(x_train, y_train)
 
 predictions = clf.predict(x_test)
+# training on the first 4,000 tweets yields an accuracy of 0.806
 print(accuracy_score(y_test, predictions))
